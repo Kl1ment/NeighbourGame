@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(CreatorSlot))]
 public class Inventory : MonoBehaviour
 {
     private CreatorSlot _creatorSlot;
@@ -13,14 +14,14 @@ public class Inventory : MonoBehaviour
 
     private void OnEnable()
     {
-        TakingObject.Took += OnTakeItems;
+        Chest.Took += OnTakeItems;
         ResolutionObject.RequestItem += OnGetSlot;
         Slot.ChoiseItem += OnSetActiveItem;
     }
 
     private void OnDisable()
     {
-        TakingObject.Took -= OnTakeItems;
+        Chest.Took -= OnTakeItems;
         ResolutionObject.RequestItem -= OnGetSlot;
         Slot.ChoiseItem -= OnSetActiveItem;
     }

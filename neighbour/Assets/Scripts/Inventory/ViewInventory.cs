@@ -29,12 +29,12 @@ public class ViewInventory : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     private void OnEnable()
     {
-        TakingObject.Took += OnTakeItem;
+        Chest.Took += OnTakeItem;
     }
 
     private void OnDisable()
     {
-        TakingObject.Took -= OnTakeItem;
+        Chest.Took -= OnTakeItem;
     }
 
     public void OnPointerEnter(PointerEventData eventData)
