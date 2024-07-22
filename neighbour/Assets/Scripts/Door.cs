@@ -1,30 +1,47 @@
 using UnityEngine;
 
-public class Door : MonoBehaviour
+public class Door : InteractiveObject
 {
+    [SerializeField] private GameObject _door;
     private Quaternion _defaultRotation;
+
+    private GameObject _passer;
 
     private void Start()
     {
-        _defaultRotation = transform.rotation;
+        _defaultRotation = _door.transform.rotation;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        float dir = (transform.forward - other.transform.forward).z;
-        Debug.Log(other.transform.forward);
-        if (dir < 1)
+        _passer = other.gameObject;
+        
+        if (_passer.tag != Tags.Player)
         {
-            transform.Rotate(Vector3.up, 90);
-        }
-        else
-        {
-            transform.Rotate(Vector3.up, -90);
+            Open();
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        transform.rotation = _defaultRotation;
+        _door.transform.rotation = _defaultRotation;
+    }
+
+    public override void Interactive()
+    {
+        Open();
+    }
+
+    private void Open()
+    {
+        float dir = (transform.forward + _passer.transform.forward).magnitude;
+        if (dir > 1)
+        {
+            _door.transform.Rotate(Vector3.up, 90);
+        }
+        else
+        {
+            _door.transform.Rotate(Vector3.up, -90);
+        }
     }
 }

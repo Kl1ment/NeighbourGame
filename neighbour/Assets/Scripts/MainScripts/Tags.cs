@@ -1,10 +1,10 @@
 
 public static class Tags
 {
-    private static string _player = "Player";
-    public static string Player => _player;
+    public static string Player => "Player";
 
-    private static string _visionTrigger = "VisionTrigger";
-    public static string VisionTrigger => _visionTrigger;
+    public static string VisionTrigger => "VisionTrigger";
+
+    public static string Door => "Door";
 
 }

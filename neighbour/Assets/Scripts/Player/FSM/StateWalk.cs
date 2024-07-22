@@ -52,8 +52,8 @@ public class StateWalk : FsmState
             RaycastHit hit = MouseRay.ReleaseRay();
             if (hit.transform)
             {
-                PlayerMovement.MoveTo(hit.point, speed);
                 _currentInteraction = null;
+                PlayerMovement.MoveTo(hit.point, speed);
             }
         }
 

@@ -12,6 +12,7 @@ public class SelectedObject : MonoBehaviour
         _outline.OutlineColor = Color.white;
         _outline.OutlineWidth = 7;
     }
+
     public void Select()
     {
         _outline.enabled = true;
